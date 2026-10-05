@@ -1,0 +1,55 @@
+name: import-and-publish
+on:
+  push:
+    branches: [main]
+    paths: ['bundle.txt', '.github/workflows/publish.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch and verify bundle
+        run: |
+          set -e
+          URL=$(sed -n 1p bundle.txt)
+          SHA=$(sed -n 2p bundle.txt)
+          curl -fsSL "$URL" -o /tmp/site.zip
+          echo "$SHA  /tmp/site.zip" | sha256sum -c -
+          unzip -o /tmp/site.zip -d .
+          touch .nojekyll
+          ls -la
+      - name: Commit site files
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git diff --cached --quiet || git commit -m 'Import site bundle'
+          git push
+      - name: Configure Pages
+        id: pages
+        continue-on-error: true
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+  deploy:
+    needs: import
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
