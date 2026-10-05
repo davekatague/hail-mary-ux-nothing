@@ -1,0 +1,414 @@
+/* ==========================================================================
+   THEMES — swappable design tokens
+   Usage:  <html data-theme="original">  or  <html data-theme="nothing">
+   Every visual decision in a page should read from these custom properties.
+   To theme another page: link this file, set data-theme on <html>, and style
+   components with var(--token). Font files live in ./fonts/ next to this file.
+   ========================================================================== */
+
+/* ---- Nothing theme fonts (same families/weights as the Nothing reference) ---- */
+@font-face { font-family: 'Aeonik Pro'; src: url('fonts/AeonikPro-Light.otf') format('opentype'); font-weight: 300; font-display: swap; }
+@font-face { font-family: 'Aeonik Pro'; src: url('fonts/AeonikPro-Regular.otf') format('opentype'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Aeonik Pro'; src: url('fonts/AeonikPro-Medium.otf') format('opentype'); font-weight: 500; font-display: swap; }
+@font-face { font-family: 'Ndot'; src: url('fonts/Ndot57.otf') format('opentype'); font-weight: 400; font-display: swap; }
+
+/* ---------------------------------------------------------------- ORIGINAL */
+/* Light slate neutrals + aerospace amber/emerald/red (Tailwind palette).     */
+:root,
+[data-theme="original"] {
+  color-scheme: light;
+  /* type */
+  --font-body: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-body);
+  --font-num: var(--font-body);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  --weight-body: 400;
+  --weight-strong: 700;
+  --weight-title: 700;
+  --weight-h2: 700;
+  --weight-h3: 700;
+  --weight-num: 700;
+  --size-title: 20px;
+  --size-h2: 24px;
+  --size-h3: 16px;
+  --size-num: 24px;
+  --size-kpi: 24px;
+  --tracking-title: -0.025em;
+  --tracking-h2: 0;
+  --tracking-num: 0;
+  --label-transform: uppercase;
+  --label-tracking: 0.05em;
+  --label-weight: 700;
+  --label-size: 12px;
+
+  /* page */
+  --bg: #f8fafc;
+  --bg-glow: none;
+  --text: #334155;
+  --text-strong: #0f172a;
+  --text-muted: #475569;
+  --text-faint: #64748b;
+  --border: #e2e8f0;
+  --wrap-max: 1280px;
+  --wrap-pad: 32px;
+  --gap: 32px;
+
+  /* header + nav */
+  --header-bg: #0f172a;
+  --header-blur: none;
+  --header-border: #1e293b;
+  --header-text: #ffffff;
+  --header-muted: #94a3b8;
+  --nav-bg: #020617;
+  --chip-bg: #1e293b;
+  --chip-border: #334155;
+  --chip-text: #cbd5e1;
+  --logo-bg: #d97706;
+  --logo-text: #020617;
+  --logo-radius: 4px;
+  --logo-font: var(--font-body);
+  --tab-text: #94a3b8;
+  --tab-hover-text: #ffffff;
+  --tab-hover-bg: #1e293b;
+  --tab-active-bg: rgba(30, 41, 59, 0.9);
+  --tab-active-text: #f59e0b;
+  --tab-active-weight: 600;
+  --tab-radius: 6px;
+  --rainbow: none;
+
+  /* surfaces */
+  --surface: #ffffff;
+  --surface-border: 1px solid #e2e8f0;
+  --surface-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --surface-blur: none;
+  --surface-2: #f8fafc;
+  --surface-2-border: 1px solid #e2e8f0;
+  --surface-2-shadow: none;
+  --radius-lg: 12px;
+  --radius-md: 8px;
+  --radius-sm: 4px;
+  --radius-pill: 6px;
+  --card-pad: 32px;
+
+  /* dark instrument panels */
+  --panel: #0f172a;
+  --panel-2: #020617;
+  --panel-3: #1e293b;
+  --panel-border: 1px solid #1e293b;
+  --panel-text: #f1f5f9;
+  --panel-muted: #94a3b8;
+  --panel-faint: #64748b;
+  --panel-strong: #e2e8f0;
+  --panel-heading: #fbbf24;
+  --panel-shadow: none;
+  --field-bg: #0f172a;
+  --field-border: #334155;
+  --field-text: #fde68a;
+
+  /* section heading treatment */
+  --sec-bar: 4px solid #f59e0b;
+  --sec-bar-pad: 16px;
+  --sec-index-display: none;
+  --tick-display: none;
+  --tick-color: #f59e0b;
+  --dots: none;
+
+  /* accent + states */
+  --accent: #d97706;
+  --accent-hi: #f59e0b;
+  --accent-on: #020617;
+  --accent-soft-bg: #fffbeb;
+  --accent-soft-border: 1px solid #fde68a;
+  --accent-soft-text: #78350f;
+  --note-bg: #f1f5f9;
+  --note-border: 1px solid #e2e8f0;
+  --note-text: #334155;
+  --select-bg: rgba(120, 53, 15, 0.4);
+  --select-border: #f59e0b;
+  --select-text: #fde68a;
+  --select-shadow: none;
+  --step-bg: #1e293b;
+  --step-border: #334155;
+  --step-text: #cbd5e1;
+  --step-hover-border: #64748b;
+  --ok: #10b981;
+  --ok-hi: #34d399;
+  --warn: #f59e0b;
+  --alert: #ef4444;
+  --btn-ok-bg: #047857;  --btn-ok-text: #fff;
+  --btn-warn-bg: #b45309; --btn-warn-text: #fff;
+  --btn-alert-bg: #b91c1c; --btn-alert-text: #fff;
+  --btn-primary-bg: #d97706;
+  --btn-primary-hover: #f59e0b;
+  --btn-primary-text: #020617;
+  --badge-bg: #451a03;
+  --badge-border: 1px solid #92400e;
+  --badge-text: #fcd34d;
+  --range-accent: #f59e0b;
+
+  /* comparison matrix */
+  --th-bg: #f1f5f9;
+  --th-text: #334155;
+  --th-bad-bg: #fef2f2;  --th-bad-text: #7f1d1d;
+  --th-good-bg: #ecfdf5; --th-good-text: #064e3b;
+  --td-bad: #b91c1c;
+  --td-good: #065f46;
+  --kpi-good-bg: #ecfdf5; --kpi-good-border: 1px solid #a7f3d0; --kpi-good-num: #065f46; --kpi-good-text: #064e3b;
+  --kpi-warn-bg: #fffbeb; --kpi-warn-border: 1px solid #fde68a; --kpi-warn-num: #92400e; --kpi-warn-text: #78350f;
+
+  /* telemetry simulator states */
+  --sim-nominal-bg: #0b132b; --sim-nominal-border: #1c2541; --sim-nominal-text: #e0e1dd;
+  --sim-warning-bg: #2b1d0b; --sim-warning-border: #5c3a14; --sim-warning-text: #fef08a;
+  --sim-alert-bg: #2b0b0b;   --sim-alert-border: #5c1414;   --sim-alert-text: #fecaca;
+  --sim-card-bg: rgba(15, 23, 42, 0.8);
+  --sim-card-border: 1px solid rgba(51, 65, 85, 0.8);
+  --sim-chart-bg: rgba(2, 6, 23, 0.8);
+  --space-gradient: linear-gradient(to right, #1e3a8a, #581c87, #020617);
+  --lens-screen-bg: rgba(15, 23, 42, 0.9);
+
+  /* charts (read by JS) */
+  --chart-ok: #059669;
+  --chart-warn: #d97706;
+  --chart-alert: #dc2626;
+  --chart-ok-fill: rgba(5, 150, 105, 0.2);
+  --chart-warn-fill: rgba(217, 119, 6, 0.1);
+  --chart-alert-fill: rgba(220, 38, 38, 0.2);
+  --chart-legend: #334155;
+  --chart-tick: #475569;
+  --chart-grid: #cbd5e1;
+  --chart-angle: #e2e8f0;
+  --chart-point: #1e293b;
+  --chart-panel-legend: #cbd5e1;
+  --chart-panel-tick: #64748b;
+  --chart-panel-grid: #1e293b;
+  --wave: #d97706;
+
+  /* theme switcher */
+  --switch-bg: #1e293b;
+  --switch-text: #94a3b8;
+  --switch-active-bg: #f59e0b;
+  --switch-active-text: #020617;
+
+  /* component metrics (original) */
+  --info: #38bdf8;
+  --logo-weight: 700; --logo-size: 15px;
+  --tab-gap: 4px; --tab-pad-y: 8px; --tab-size: 14px; --tab-weight: 500;
+  --tab-bg: transparent; --tab-shadow: none; --tab-height: 36px; --tab-pad-x: 16px;
+  --lede-gap: 4px; --lede-color: #475569; --lede-size: 16px; --prose-size: 16px;
+  --size-h3-lg: 18px; --weight-h3-lg: 700; --tracking-h3-lg: 0;
+  --radius-sub: 8px; --subcard-sm-pad: 16px; --subcard-xs-pad: 12px;
+  --callout-pad: 16px; --callout-size: 12px;
+  --th-weight: 600; --th-size: 12px; --th-tracking: 0.02em; --weight-attr: 600;
+  --radius-panel: 12px; --panel-pad: 24px; --inset-pad: 20px; --panel-body: #cbd5e1;
+  --step-pad: 12px; --step-min-h: 0; --step-shadow: none; --step-align: center; --step-justify: center; --step-items: center; --weight-select: 700;
+  --hw-title-size: 12px;
+  --k-size: 12px; --k-tracking: 0; --k-transform: none; --k-gap: 0;
+  --sim-border-w: 2px; --sim-blur: none; --sim-divider: rgba(51,65,85,0.6);
+  --sim-heading-gap: 4px; --sim-heading-size: 20px; --sim-heading: #ffffff;
+  --btn-h: 30px; --btn-pad-x: 12px; --radius-btn: 4px; --btn-size: 12px; --btn-h-lg: 34px;
+  --radius-card-sm: 4px; --sim-card-pad: 16px; --sim-card-shadow: none;
+  --sim-k: #94a3b8; --sim-k-gap: 4px; --sim-v: #ffffff; --sim-s-gap: 4px; --sim-chart-pad: 16px;
+  --lens-h: 160px; --space-label: rgba(253,230,138,0.6); --space-tracking: 0.1em;
+  --lens-screen-bw: 2px; --lens-screen-pad: 12px; --radius-btn-sq: 4px; --ok-line: rgba(16,185,129,0.5);
+  --badge-pad: 4px 10px; --field-label: #cbd5e1; --field-shadow: none; --field-pad-x: 12px; --field-size: 12px;
+  --wave-bg: #0f172a; --wave-pad: 8px; --wave-h: 112px; --out-pad: 16px;
+  --kpi-pad: 16px; --weight-kpi-t: 500; --kpi-t-gap: 0; --kpi-bar-display: none;
+  --chart-font-weight: 400; --chart-line: 3; --chart-bar-radius: 0; --chart-point-size: 9; --chart-point-weight: bold; --chart-bar-grid: rgba(0,0,0,0.1); --chart-legend-dot: 0;
+}
+
+/* ----------------------------------------------------------------- NOTHING */
+/* Deep navy glass, Aeonik Pro Light body, Ndot dot-matrix numerals,          */
+/* pill controls, status ticks, rainbow hairline.                             */
+[data-theme="nothing"] {
+  color-scheme: dark;
+  --font-body: 'Aeonik Pro', system-ui, sans-serif;
+  --font-display: 'Aeonik Pro', system-ui, sans-serif;
+  --font-num: Ndot, 'Aeonik Pro', sans-serif;
+  --font-mono: 'Aeonik Pro', system-ui, sans-serif;
+  --weight-body: 300;
+  --weight-strong: 400;
+  --weight-title: 400;
+  --weight-h2: 300;
+  --weight-h3: 400;
+  --weight-num: 400;
+  --size-title: 16px;
+  --size-h2: 40px;
+  --size-h3: 15px;
+  --size-num: 30px;
+  --size-kpi: 44px;
+  --tracking-title: -0.015em;
+  --tracking-h2: -0.035em;
+  --tracking-num: 0.01em;
+  --label-transform: uppercase;
+  --label-tracking: 0.22em;
+  --label-weight: 300;
+  --label-size: 11px;
+
+  --bg: #060a20;
+  --bg-glow:
+    radial-gradient(38% 32% at 18% 12%, rgba(91,124,250,0.38), transparent 70%),
+    radial-gradient(34% 30% at 82% 6%, rgba(53,201,232,0.22), transparent 72%),
+    radial-gradient(40% 36% at 68% 82%, rgba(122,84,220,0.26), transparent 72%),
+    radial-gradient(30% 26% at 12% 78%, rgba(242,195,60,0.1), transparent 72%);
+  --text: #b9c0e4;
+  --text-strong: #f0f2ff;
+  --text-muted: #8891c2;
+  --text-faint: #6f79ab;
+  --border: rgba(255,255,255,0.08);
+  --wrap-max: 1320px;
+  --wrap-pad: 30px;
+  --gap: 22px;
+
+  --header-bg: rgba(6,10,32,0.55);
+  --header-blur: blur(24px) saturate(1.6);
+  --header-border: rgba(255,255,255,0.06);
+  --header-text: #f0f2ff;
+  --header-muted: #6f79ab;
+  --nav-bg: transparent;
+  --chip-bg: rgba(255,255,255,0.07);
+  --chip-border: transparent;
+  --chip-text: #a4accf;
+  --logo-bg: #f0f2ff;
+  --logo-text: #060a20;
+  --logo-radius: 999px;
+  --logo-font: Ndot, 'Aeonik Pro', sans-serif;
+  --tab-text: #6f79ab;
+  --tab-hover-text: #f0f2ff;
+  --tab-hover-bg: rgba(255,255,255,0.1);
+  --tab-active-bg: #f0f2ff;
+  --tab-active-text: #060a20;
+  --tab-active-weight: 400;
+  --tab-radius: 999px;
+  --rainbow: linear-gradient(90deg, #35c9e8, #e8564b 34%, #f2c33c 62%, #4ad9a4);
+
+  --surface: linear-gradient(160deg, rgba(255,255,255,0.075), rgba(255,255,255,0.03) 48%, rgba(255,255,255,0.055));
+  --surface-border: 0 solid transparent;
+  --surface-shadow: inset 0 1px 0 rgba(255,255,255,0.2), inset 0 0 0 1px rgba(255,255,255,0.055), 0 26px 64px rgba(4,7,24,0.4);
+  --surface-blur: blur(34px) saturate(1.7);
+  --surface-2: rgba(255,255,255,0.055);
+  --surface-2-border: 0 solid transparent;
+  --surface-2-shadow: inset 0 1px 0 rgba(255,255,255,0.16), inset 0 0 0 1px rgba(255,255,255,0.04);
+  --radius-lg: 34px;
+  --radius-md: 24px;
+  --radius-sm: 16px;
+  --radius-pill: 999px;
+  --card-pad: 34px;
+
+  --panel: rgba(255,255,255,0.035);
+  --panel-2: rgba(6,10,32,0.55);
+  --panel-3: rgba(255,255,255,0.06);
+  --panel-border: 0 solid transparent;
+  --panel-text: #f0f2ff;
+  --panel-muted: #8891c2;
+  --panel-faint: #6f79ab;
+  --panel-strong: #f0f2ff;
+  --panel-heading: #f0f2ff;
+  --panel-shadow: inset 0 0 0 1px rgba(255,255,255,0.07), inset 0 1px 0 rgba(255,255,255,0.1);
+  --field-bg: rgba(255,255,255,0.06);
+  --field-border: transparent;
+  --field-text: #f0f2ff;
+
+  --sec-bar: 0 solid transparent;
+  --sec-bar-pad: 0px;
+  --sec-index-display: block;
+  --tick-display: inline-block;
+  --tick-color: #f2c33c;
+  --dots: radial-gradient(circle, rgba(255,255,255,0.13) 1px, transparent 1.4px) 0 0 / 9px 9px;
+
+  --accent: #5b7cfa;
+  --accent-hi: #f2c33c;
+  --accent-on: #ffffff;
+  --accent-soft-bg: rgba(242,195,60,0.1);
+  --accent-soft-border: 0 solid transparent;
+  --accent-soft-text: #ffe3a0;
+  --note-bg: rgba(53,201,232,0.08);
+  --note-border: 0 solid transparent;
+  --note-text: #bfeaf5;
+  --select-bg: #5b7cfa;
+  --select-border: transparent;
+  --select-text: #ffffff;
+  --select-shadow: 0 14px 34px rgba(61,92,250,0.32);
+  --step-bg: rgba(255,255,255,0.055);
+  --step-border: transparent;
+  --step-text: #c9cfec;
+  --step-hover-border: rgba(255,255,255,0.18);
+  --ok: #4ad9a4;
+  --ok-hi: #4ad9a4;
+  --warn: #f2c33c;
+  --alert: #e8564b;
+  --btn-ok-bg: rgba(74,217,164,0.16);  --btn-ok-text: #8ff0c9;
+  --btn-warn-bg: rgba(242,195,60,0.16); --btn-warn-text: #ffe08a;
+  --btn-alert-bg: rgba(232,86,75,0.16); --btn-alert-text: #ff9a92;
+  --btn-primary-bg: #f0f2ff;
+  --btn-primary-hover: #ffffff;
+  --btn-primary-text: #060a20;
+  --badge-bg: rgba(255,255,255,0.07);
+  --badge-border: 0 solid transparent;
+  --badge-text: #a4accf;
+  --range-accent: #5b7cfa;
+
+  --th-bg: rgba(255,255,255,0.04);
+  --th-text: #7b85b8;
+  --th-bad-bg: rgba(232,86,75,0.1);  --th-bad-text: #ffb3ac;
+  --th-good-bg: rgba(74,217,164,0.1); --th-good-text: #8ff0c9;
+  --td-bad: #ff9a92;
+  --td-good: #8ff0c9;
+  --kpi-good-bg: rgba(74,217,164,0.08); --kpi-good-border: 0 solid transparent; --kpi-good-num: #f0f2ff; --kpi-good-text: #8ff0c9;
+  --kpi-warn-bg: rgba(242,195,60,0.08); --kpi-warn-border: 0 solid transparent; --kpi-warn-num: #f0f2ff; --kpi-warn-text: #ffe08a;
+
+  --sim-nominal-bg: rgba(74,217,164,0.06);  --sim-nominal-border: rgba(74,217,164,0.28); --sim-nominal-text: #f0f2ff;
+  --sim-warning-bg: rgba(242,195,60,0.08);  --sim-warning-border: rgba(242,195,60,0.4);  --sim-warning-text: #ffe8a8;
+  --sim-alert-bg: rgba(232,86,75,0.11);     --sim-alert-border: rgba(232,86,75,0.5);    --sim-alert-text: #ffc4bf;
+  --sim-card-bg: rgba(255,255,255,0.055);
+  --sim-card-border: 0 solid transparent;
+  --sim-chart-bg: rgba(6,10,32,0.45);
+  --space-gradient: radial-gradient(60% 90% at 30% 50%, rgba(91,124,250,0.55), transparent 70%), radial-gradient(50% 80% at 75% 40%, rgba(122,84,220,0.5), transparent 70%), #060a20;
+  --lens-screen-bg: rgba(6,10,32,0.85);
+
+  --chart-ok: #4ad9a4;
+  --chart-warn: #f2c33c;
+  --chart-alert: #e8564b;
+  --chart-ok-fill: rgba(74,217,164,0.18);
+  --chart-warn-fill: rgba(242,195,60,0.14);
+  --chart-alert-fill: rgba(232,86,75,0.2);
+  --chart-legend: #a4accf;
+  --chart-tick: #6f79ab;
+  --chart-grid: rgba(255,255,255,0.08);
+  --chart-angle: rgba(255,255,255,0.08);
+  --chart-point: #c9cfec;
+  --chart-panel-legend: #a4accf;
+  --chart-panel-tick: #6f79ab;
+  --chart-panel-grid: rgba(255,255,255,0.06);
+  --wave: #35c9e8;
+
+  --switch-bg: rgba(255,255,255,0.07);
+  --switch-text: #8891c2;
+  --switch-active-bg: #f0f2ff;
+  --switch-active-text: #060a20;
+
+  /* component metrics (nothing) */
+  --info: #35c9e8;
+  --logo-weight: 400; --logo-size: 13px;
+  --tab-gap: 10px; --tab-pad-y: 12px; --tab-size: 12.5px; --tab-weight: 300;
+  --tab-bg: rgba(255,255,255,0.06); --tab-shadow: inset 0 1px 0 rgba(255,255,255,0.14); --tab-height: 40px; --tab-pad-x: 20px;
+  --lede-gap: 12px; --lede-color: #6f79ab; --lede-size: 14px; --prose-size: 15px;
+  --size-h3-lg: 22px; --weight-h3-lg: 300; --tracking-h3-lg: -0.02em;
+  --radius-sub: 22px; --subcard-sm-pad: 22px; --subcard-xs-pad: 18px 22px;
+  --callout-pad: 20px 24px; --callout-size: 13px;
+  --th-weight: 300; --th-size: 10.5px; --th-tracking: 0.18em; --weight-attr: 400;
+  --radius-panel: 28px; --panel-pad: 28px; --inset-pad: 24px; --panel-body: #b9c0e4;
+  --step-pad: 18px 16px; --step-min-h: 100px; --step-shadow: inset 0 1px 0 rgba(255,255,255,0.13); --step-align: left; --step-justify: space-between; --step-items: flex-start; --weight-select: 400;
+  --hw-title-size: 15px;
+  --k-size: 10.5px; --k-tracking: 0.18em; --k-transform: uppercase; --k-gap: 6px;
+  --sim-border-w: 1px; --sim-blur: blur(22px); --sim-divider: rgba(255,255,255,0.08);
+  --sim-heading-gap: 10px; --sim-heading-size: 26px; --sim-heading: #f0f2ff;
+  --btn-h: 38px; --btn-pad-x: 18px; --radius-btn: 999px; --btn-size: 12.5px; --btn-h-lg: 40px;
+  --radius-card-sm: 24px; --sim-card-pad: 22px; --sim-card-shadow: inset 0 1px 0 rgba(255,255,255,0.16);
+  --sim-k: #8891c2; --sim-k-gap: 22px; --sim-v: #f0f2ff; --sim-s-gap: 14px; --sim-chart-pad: 22px;
+  --lens-h: 184px; --space-label: rgba(240,242,255,0.55); --space-tracking: 0.22em;
+  --lens-screen-bw: 1px; --lens-screen-pad: 14px 18px; --radius-btn-sq: 22px; --ok-line: rgba(74,217,164,0.4);
+  --badge-pad: 8px 16px; --field-label: #7b85b8; --field-shadow: inset 0 1px 0 rgba(255,255,255,0.12); --field-pad-x: 18px; --field-size: 13px;
+  --wave-bg: radial-gradient(circle, rgba(255,255,255,0.13) 1px, transparent 1.4px) 0 0 / 9px 9px, rgba(255,255,255,0.03); --wave-pad: 12px; --wave-h: 128px; --out-pad: 22px;
+  --kpi-pad: 24px; --weight-kpi-t: 300; --kpi-t-gap: 18px; --kpi-bar-display: block;
+  --chart-font-weight: 300; --chart-line: 1.5; --chart-bar-radius: 6; --chart-point-size: 10.5; --chart-point-weight: 400; --chart-bar-grid: rgba(255,255,255,0.07); --chart-legend-dot: 1;
+}
